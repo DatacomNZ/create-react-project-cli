@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import execa from 'execa';
 import Listr from 'listr';
 import inquirer from 'inquirer';
-
+import { copyContentFolder } from './file-copy';
 
 const questions = [
     {
@@ -47,6 +47,14 @@ function addCustomisationsTasks(options: any) {
             task: (ctx: any, task: any)  =>  execa('npm', ['install', '--save', 'react-router-dom'])
         },
         {
+            title: 'Installing node sass',
+            task: (ctx: any, task: any)  =>  execa('npm', ['install', '--save', 'node-sass'])
+        },
+        {
+            title: 'Installing story book',
+            task: (ctx: any, task: any)  =>  execa('npx', ['-p', '@storybook/cli', 'sb', 'init'])
+        },
+        {
             title: 'Installing redux',
             enabled: () => options.storageType == 1,
             task: (ctx: any, task: any)  =>  execa('npm', ['install', '--save', 'redux @types/redux', 'react-redux', '@types/react-redux'])
@@ -71,6 +79,12 @@ function addCustomisationsTasks(options: any) {
             title: 'Installing @blueprintjs/core',
             enabled: () => options.webComponents == 3,
             task: (ctx: any, task: any)  =>  execa('npm', ['install', '--save', '@blueprintjs/core'])
+        },
+        {
+            title: 'Updating folder structure',
+            task: (ctx: any, task: any)  => {
+                return copyContentFolder();
+            }
         }
     ]);
 }
