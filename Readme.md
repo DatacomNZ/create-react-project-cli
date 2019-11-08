@@ -10,12 +10,12 @@ It uses:
 
 ### Generate new react app
 <code>
-    npx https://github.com/niallduane/create-react-project-cli.git [projectName]
+    npx https://github.com/DatacomNZ/create-react-project-cli.git [projectName]
 </code>
 
 ### Update an existing react app with SA recommended practices
 <code>
-    npx https://github.com/niallduane/create-react-project-cli.git update
+    npx https://github.com/DatacomNZ/create-react-project-cli.git update
 </code>
 
 ## Develop and Run locally
